@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import api from "../../services/api";
-
+import Card from "../../components/Card";
 
 export default class Main extends Component {
    
@@ -24,8 +24,7 @@ export default class Main extends Component {
         <div className="pokemon-list">
             {this.state.pokemon.map((poke, index) =>
                <article key={index} >
-                    <h2 >{poke.name}</h2>
-                    <h3>{poke.url}</h3>
+                   <Card url= {poke.url}/>
                </article>
             )}
         </div>
