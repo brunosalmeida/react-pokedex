@@ -1,0 +1,29 @@
+.pokemon-list {
+  display: flex;
+ 
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: wrap;
+}
+
+.item {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions button
+{
+  border: none;
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+  min-width: 100px;
+  max-width: 100px;
+  min-height: 50px;
+  max-height: 50px;
+}

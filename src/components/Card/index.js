@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import api from "../../services/api";
-// import { Container } from './styles';
+import "./style.css"
+
 
 export default class Card extends Component {
   state = {
@@ -22,9 +23,9 @@ export default class Card extends Component {
 
   render() {
     return (
-      <div>
-        <img src={this.state.info.image}/>
-        <h1>{this.state.info.name}</h1>
+      <div className="container">
+        <img className="pokemon-image" src={this.state.info.image} alt={this.state.info.name}/>
+        <p>{this.state.info.name}</p>
       </div>
     );
   }
