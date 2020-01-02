@@ -20,7 +20,7 @@ export default class Main extends Component {
   };
 
   previous = () => {};
-  netx = () => {
+  next = () => {
     const { pageInfo } = this.state;
     console.log(pageInfo);
 
