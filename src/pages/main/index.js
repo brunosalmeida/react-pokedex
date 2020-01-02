@@ -13,8 +13,13 @@ export default class Main extends Component {
   }
 
   loadPokemon = async (url = "pokemon/") => {
+    
     const response = await api.get(url);
+    
     const { results, ...pageInfo } = response.data;
+    
+    console.log(this.state.pokemon);
+
 
     this.setState({ pokemon: results, pageInfo });
   };
@@ -22,28 +27,29 @@ export default class Main extends Component {
   previous = () => {};
   next = () => {
     const { pageInfo } = this.state;
-    console.log(pageInfo);
 
-    // const separator = "https://pokeapi.co/api/v2/";
-    // let url = pageInfo.netx.split(separator)[1];
+    const separator = "https://pokeapi.co/api/v2/";
+    const url = pageInfo.next.split(separator)[1];
 
-    // console.log(url);
-    // this.loadPokemon(url);
+    this.loadPokemon(url);
   };
 
   render() {
     return (
-      <div className="pokemon-list">
-        {this.state.pokemon.map((poke, index) => (
-          <div key={index} className="item">
-            <Card key={index} url={poke.url} />
-          </div>
-        ))}
+      <>
+        <div className="pokemon-list">
+          {this.state.pokemon.map((poke, index) => (
+            
+            <div key={index} className="item">
+              <Card key={index} url={poke.url} />
+            </div>
+          ))}
+        </div>
         <div className="actions">
           <button onClick={this.previous}>Previous</button>
           <button onClick={this.next}>Next</button>
         </div>
-      </div>
+      </>
     );
   }
 }
