@@ -5,7 +5,7 @@ import "./style.css";
 export default class Main extends Component {
   state = {
     pokemon: [],
-    pageInfo: {}
+    pageInfo: {},
   };
 
   componentDidMount() {
@@ -14,34 +14,34 @@ export default class Main extends Component {
 
   loadPokemon = async (url = "pokemon/") => {
     
+    console.log(this.state);
+
     const response = await api.get(url);
-    
     const { results, ...pageInfo } = response.data;
     
-    console.log(this.state.pokemon);
-
-
     this.setState({ pokemon: results, pageInfo });
   };
 
   previous = () => {};
   next = () => {
+    
     const { pageInfo } = this.state;
 
     const separator = "https://pokeapi.co/api/v2/";
     const url = pageInfo.next.split(separator)[1];
 
     this.loadPokemon(url);
+    console.log(url);
   };
 
   render() {
     return (
       <>
         <div className="pokemon-list">
-          {this.state.pokemon.map((poke, index) => (
+          {this.state.pokemon.map((poke) => (
             
-            <div key={index} className="item">
-              <Card key={index} url={poke.url} />
+            <div key={poke.name} className="item">
+              <Card key={poke.name} url={poke.url} />
             </div>
           ))}
         </div>
