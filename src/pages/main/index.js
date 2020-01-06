@@ -14,8 +14,6 @@ export default class Main extends Component {
 
   loadPokemon = async (url = "pokemon/") => {
     
-    console.log(this.state);
-
     const response = await api.get(url);
     const { results, ...pageInfo } = response.data;
     

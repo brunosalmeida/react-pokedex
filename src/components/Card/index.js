@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
+
 import api from "../../services/api";
 import "./style.css"
 
@@ -25,7 +27,7 @@ export default class Card extends Component {
     return (
       <div className="container">
         <img className="pokemon-image" src={this.state.info.image} alt={this.state.info.name}/>
-        <p>{this.state.info.name}</p>
+        <Link to={`/details/${this.state.info.name}`}>{this.state.info.name}</Link>
       </div>
     );
   }
