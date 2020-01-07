@@ -1,28 +1,45 @@
 import React, { Component } from "react";
-import { useParams } from "react-router-dom";
 
 import api from "../../services/api";
 
 import "./styles.css";
+import { withRouter } from "react-router";
 
-export default class Detail extends Component {
+class Detail extends Component {
   state = {
-    pokemon: {}
+    detail: {},
+    image : ""
   };
-
+  
   async componentDidMount() {
-    let { id } = await useParams();
-
-    console.log(id);
-
-    // var response = await api.get()
+    const { name } = this.props.match.params;    
+    const response = await api.get(`pokemon/${name}`);
+    
+    const {data} = response;
+    const image = data.sprites.front_default;
+    
+    this.setState({detail : data, image});
+    
   }
-
+  
   render() {
+    const {detail} = this.state;
+    const {image} = this.state;
+    console.log(image);
     return (
-      <div>
-        <h1>TEste</h1>
-      </div>
+      <article>
+          <img src={image} alt={image}/> 
+          <label>{detail.name}</label>
+      </article>
     );
   }
 }
+
+export default withRouter(Detail);
+
+/* 
+  WARNING!
+  To get params from url after "/detail/" we need to to use withRouter
+  beacuse it is a class componten not a functional compontent. 
+  Otherwise this.props will undefined and match will not work.
+*/
