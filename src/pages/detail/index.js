@@ -8,28 +8,37 @@ import { withRouter } from "react-router";
 class Detail extends Component {
   state = {
     detail: {},
-    image : ""
+    image: "",
+    types: []
   };
-  
+
   async componentDidMount() {
-    const { name } = this.props.match.params;    
+    const { name } = this.props.match.params;
     const response = await api.get(`pokemon/${name}`);
-    
-    const {data} = response;
+
+    const { data } = response;
     const image = data.sprites.front_default;
-    
-    this.setState({detail : data, image});
-    
+    const types = data.types;
+
+    this.setState({ detail: data, image, types });
   }
-  
+
   render() {
-    const {detail} = this.state;
-    const {image} = this.state;
-    console.log(image);
+    const { detail } = this.state;
+    const { image } = this.state;
+    const { types } = this.state;
+
     return (
-      <article>
-          <img src={image} alt={image}/> 
-          <label>{detail.name}</label>
+      <article className="detail">
+        <img src={image} alt={image} />
+        <label>{detail.name}</label>
+        <div className="pokemon-type">
+          {types.map(pokeType => (
+            <div key={pokeType.type.name}>
+              <label>{pokeType.type.name}</label>
+            </div>
+          ))}
+        </div>
       </article>
     );
   }

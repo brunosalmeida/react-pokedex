@@ -27,7 +27,8 @@ export default class Card extends Component {
     return (
       <div className="container">
         <img className="pokemon-image" src={this.state.info.image} alt={this.state.info.name}/>
-        <Link to={`/details/${this.state.info.name}`}>{this.state.info.name}</Link>
+        <Link className="pokemon-name" to={`/details/${this.state.info.name}`}>{this.state.info.name}</Link>
+        <button className="catch-button">Catch it!</button>
       </div>
     );
   }

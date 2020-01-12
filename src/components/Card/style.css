@@ -3,13 +3,36 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 10px,10px, 10px, 10px;
+}
+
+.container:hover{
+    
     max-width: 150px;
     max-width: 150px;
     min-width: 150px;
     min-width: 150px;
     background-color: gainsboro;
-    border-style: solid;
+    /* border-style: solid; */
     border-radius: 10px;
     border-width: 1px;
-    padding: 10px,10px, 10px, 10px;
+}
+
+
+.pokemon-name{
+    text-transform: capitalize;
+    color:  rgb(235, 42, 58);
+    text-decoration: none;
+
+}
+
+.catch-button{
+    background-color: rgb(235, 42, 58);
+    border: none;
+    border-radius: 15px ;
+    color: whitesmoke;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 7px;
+    text-transform: uppercase;
 }
